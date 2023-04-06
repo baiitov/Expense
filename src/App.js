@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
+import './App.css'
+import Expense from './components/expense/Expense'
+import NewExpense from './components/new-expense/NewExpense'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [expenses, setExpenses] = useState([
+		{
+			title: 'Новый телевизор',
+			price: 400,
+			date: new Date(),
+		},
+		{
+			title: 'Новый iphone',
+			price: 600,
+			date: new Date(),
+		},
+	])
+	const addExpense = (item) => {
+		setExpenses([...expenses, item])
+	}
+	
+	return (
+		<div className='App'>
+			<NewExpense expenseFunc={addExpense} />
+			<Expense expenses={expenses} />
+		</div>
+	)
 }
+// React
+// component
+//1.function
+//2. return jsx
+//3. componenttin aty chon tamga menen bashtalysh kerek
+// reactive(state, Vdom)
 
-export default App;
+export default App
+
+// state
+// render
+// each component has own state
+// lifting state up
+// children
+// keys
