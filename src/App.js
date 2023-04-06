@@ -2,11 +2,11 @@ import { useState } from 'react'
 import './App.css'
 import Expense from './components/expense/Expense'
 import NewExpense from './components/new-expense/NewExpense'
-
+import Button from './components/UI/button'
 function App() {
 	const [expenses, setExpenses] = useState([
 		{
-			title: 'Новый телевизор',
+			title: 'Новый Car',
 			price: 400,
 			date: new Date(),
 		},
@@ -19,11 +19,12 @@ function App() {
 	const addExpense = (item) => {
 		setExpenses([...expenses, item])
 	}
-	
+
 	return (
 		<div className='App'>
 			<NewExpense expenseFunc={addExpense} />
 			<Expense expenses={expenses} />
+			<Button />
 		</div>
 	)
 }
